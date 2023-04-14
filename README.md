@@ -2,3 +2,5 @@
 _______________
  Social media site
  - prototype of a simple social media site using Html, JS, CSS
+ 
+ <img src="preview.png">
