@@ -27,3 +27,46 @@ function getRandomColor() {
 function generateColor(){
     return "#" + Math.floor(Math.random()*16777215).toString(16);
 }
+
+function generateTrailSettingBox() {
+    const parent = document.querySelector('.trails')
+    if(parent){
+        if(localStorage.getItem("trailmode") == 3){
+            parent.innerHTML = `
+                <p>Choose Mouse Trail</p>
+                <input type="radio" class="trail" name="fav_trail" value="none" checked>
+                <label for="none">none</label><br>
+                <input type="radio" class="trail" name="fav_trail" value="line">
+                <label for="line">line</label><br>
+                <input type="radio" class="trail" name="fav_trail" value="curly">
+                <label for="curly">curly</label>
+            `
+        }else if(localStorage.getItem("trailmode") == 1){
+            parent.innerHTML = `
+                <p>Choose Mouse Trail</p>
+                <input type="radio" class="trail" name="fav_trail" value="none">
+                <label for="none">none</label><br>
+                <input type="radio" class="trail" name="fav_trail" value="line">
+                <label for="line">line</label><br>
+                <input type="radio" class="trail" name="fav_trail" value="curly" checked>
+                <label for="curly">curly</label>
+            `
+        }
+        else if(localStorage.getItem("trailmode") == 2){
+            parent.innerHTML = `
+                <p>Choose Mouse Trail</p>
+                <input type="radio" class="trail" name="fav_trail" value="none">
+                <label for="none">none</label><br>
+                <input type="radio" class="trail" name="fav_trail" value="line" checked>
+                <label for="line">line</label><br>
+                <input type="radio" class="trail" name="fav_trail" value="curly">
+                <label for="curly">curly</label>
+            `
+        }
+        else{
+            console.log('no trails yet ' + localStorage.getItem("trailmode"))
+        }
+    }
+}
+
+generateTrailSettingBox()

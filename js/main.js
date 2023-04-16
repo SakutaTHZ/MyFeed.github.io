@@ -1,6 +1,5 @@
 window.onload = () =>{
     for (let index = 0; index < 3; index++) {
-        console.log('Loading Content');
         generatePosts()
     }
 }
@@ -109,7 +108,7 @@ function generatePosts() {
 				<button class="seemore">See more ...</button>
 			</div>
     `
-    parent.append(child);
+    parent?.append(child);
 
 	posts = document.querySelectorAll(".post");
 }
@@ -139,7 +138,7 @@ const lastPostObserver = new IntersectionObserver(
 )
 
 setTimeout(() => {
-	lastPostObserver.observe(document.querySelector(".post:last-child"))
+	if(document.querySelector(".post:last-child")) lastPostObserver.observe(document.querySelector(".post:last-child"))
 }, 2000);
 
 function loadNewPosts(){
@@ -151,3 +150,11 @@ function loadNewPosts(){
 posts.forEach(post => {
 	observer.observe(post);
 })
+
+document.querySelector('.setting-button')?.addEventListener(
+	"click",
+	() => {
+		document.querySelector('.setting-box').classList.toggle('show');
+	},
+	false
+)

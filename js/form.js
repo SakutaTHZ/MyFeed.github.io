@@ -19,4 +19,3 @@ document.querySelector('.login-button').addEventListener(
     },
     false
 )
-// window.location.href="http://www.google.com";

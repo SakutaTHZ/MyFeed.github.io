@@ -667,3 +667,35 @@ body{
 .post:last-child{
     /* background: green; */
 }
+
+/* setting box */
+.setting-box{
+    position: absolute;
+    right: 5px;
+    top: 55px;
+    background: var(--shadow-color);
+    border: 1px solid var(--shadow-color);
+    border-radius: 10px;
+    padding: 10px;
+    width: 300px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    transform: translateX(350px);
+}
+.setting-box.show{
+    transform: translateX(0);
+}
+.setting-box>*{
+    background: var(--background);
+    border: 1px solid var(--shadow-color);
+    padding: 10px;
+    border-radius: 10px;
+}
+.setting-box>*>p{
+    border-bottom: 1px solid var(--shadow-color);
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}

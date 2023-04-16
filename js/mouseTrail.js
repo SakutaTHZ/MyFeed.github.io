@@ -1,7 +1,10 @@
 const LINE_DURATION = 2;
 const LINE_WIDTH_START = 5;
+if (!localStorage.getItem("trailmode")) {
+  localStorage.setItem("trailmode", 3);
+}
 
-$(document).ready(function() {
+$(document).ready(function () {
   enableDrawingCanvas();
   resizeCanvas(window.innerWidth, window.innerHeight);
 
@@ -75,6 +78,33 @@ $(document).ready(function() {
   //     }
   //   }
   // });
+
+  const trails = document.querySelectorAll('.trail')
+  trails.forEach(element => {
+    element.addEventListener(
+      "click",
+      () => {
+        switch (element.value) {
+          case 'none':
+            mode = 3
+            localStorage.setItem("trailmode", 3);
+            break;
+          case 'line':
+            mode = 2;
+            localStorage.setItem("trailmode", 2);
+            break;
+          case 'curly':
+            mode = 1;
+            localStorage.setItem("trailmode", 1);
+            break;
+          default:
+            mode = 1;
+            localStorage.setItem("trailmode", 1);
+            break;
+        }
+      }, false
+    )
+  });
 });
 
 //////////////////////////
@@ -88,7 +118,9 @@ var context;
 var newWidth = 1000;
 var newHeight = 800;
 
-var mode = 1;
+var mode = localStorage.getItem("trailmode");
+mode = localStorage.getItem("trailmode");
+console.log(mode)
 var pathMode = 1;
 var spread = 1;
 
@@ -226,9 +258,9 @@ function addPoint(x, y) {
 //////////////////////////////
 
 // RequestAnimFrame definition
-window.requestAnimFrame = (function(callback) {
+window.requestAnimFrame = (function (callback) {
   return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
-    function(callback) {
+    function (callback) {
       window.setTimeout(callback, 1000 / 60);
     };
 })();
@@ -248,7 +280,7 @@ function resizeCanvas(w, h) {
 function enableListeners() {
 
   //********* Mouse Listeners *********//
-  $('#myCanvas').on('mousemove', function(e) {
+  $('#myCanvas').on('mousemove', function (e) {
     if (frame === drawEveryFrame) {
       addPoint(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
       frame = 0;
@@ -256,17 +288,17 @@ function enableListeners() {
     frame++;
   });
 
-  $('#myCanvas').on('mouseover', function(e) {});
-  $('#myCanvas').on('mouseleave', function(e) {});
+  $('#myCanvas').on('mouseover', function (e) { });
+  $('#myCanvas').on('mouseleave', function (e) { });
 
   //********* Touch Listeners *********//
-  $('#myCanvas').on('touchstart', function(e) {
+  $('#myCanvas').on('touchstart', function (e) {
     var touch = e.touches[0];
   });
-  $('#myCanvas').on('touchmove', function(e) {
+  $('#myCanvas').on('touchmove', function (e) {
     var touch = e.touches[0];
   });
-  $('#myCanvas').on('touchend', function(e) {});
+  $('#myCanvas').on('touchend', function (e) { });
 }
 
 
