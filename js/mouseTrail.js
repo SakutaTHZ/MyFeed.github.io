@@ -119,8 +119,7 @@ var newWidth = 1000;
 var newHeight = 800;
 
 var mode = localStorage.getItem("trailmode");
-mode = localStorage.getItem("trailmode");
-console.log(mode)
+
 var pathMode = 1;
 var spread = 1;
 
