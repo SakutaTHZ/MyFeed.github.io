@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".post-image").click(function(){this.requestFullscreen()})});
