@@ -6,6 +6,7 @@
     box-sizing: border-box;
     border: 0;
     font-family: 'Nunito', sans-serif;
+    transition: .5s ease-in-out;
 }
 
 /* Colors */
@@ -23,6 +24,17 @@
     align-items: center;
 }
 
+.nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    box-shadow: 0 0 10px var(--shadow-color);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
 .post-section {
     position: relative;
     width: 100vw;
@@ -37,28 +49,41 @@
     align-items: center;
     flex-direction: column;
 }
+.post-section::-webkit-scrollbar{
+    display: none;
+}
 
 .post {
     position: relative;
     width: 400px;
     box-shadow: 0 0 10px var(--shadow-color);
     border-radius: 10px;
+    opacity: 0;
+    transform: translateX(-100px);
 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+.post.show{
+    opacity: 1;
+    transform: translateX(0);
+}
 
-.post-body,.post-head,.post-foot{
+.post-body,
+.post-head,
+.post-foot {
     width: 100%;
 }
-.post-head,.post-foot{
+
+.post-head,
+.post-foot {
     height: 50px;
     background: var(--secondary-color);
 }
 
-.post-head{
+.post-head {
     display: flex;
     justify-content: space-between;
     padding: 5px 10px;
@@ -66,19 +91,67 @@
     background: var(--background);
     border-radius: 10px 10px 0 0;
 }
-.post-user-info{
+
+.post-option {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+}
+
+.post-option-box {
+    position: absolute;
+    background: var(--background);
+    right: 0;
+    top: 0px;
+    padding: 10px;
+    border-left: 1px solid var(--shadow-color);
+    border-bottom: 1px solid var(--shadow-color);
+    border-radius: 0 10px 0 10px;
+
+    display: flex;
+    gap: 2px;
+    flex-direction: column;
+
+    transform-origin: top right;
+    transform: scale(0);
+}
+
+.post-option:hover .post-option-box {
+    transform: scale(1);
+}
+
+.post-option-box>p {
+    display: flex;
+    align-items: center;
+    border: 1px solid transparent;
+    padding: 3px 10px;
+    gap: 5px;
+    border-radius: 10px;
+    font-size: 0.9em;
+}
+
+.post-option-box>p:hover {
+    cursor: pointer;
+    border: 1px solid var(--extra-color);
+    background: var(--extra-color);
+}
+
+.post-user-info {
     position: relative;
     display: flex;
     gap: 5px;
 }
-.post-user-info>img{
+
+.profile {
     width: 40px;
     aspect-ratio: 1/1;
     border: 2px solid var(--extra-color);
     border-radius: 50%;
     background: var(--background);
 }
-.post-head>.post-user-info>.active{
+
+.post-head>.post-user-info>.active {
     position: absolute;
     width: 10px;
     height: 10px;
@@ -87,45 +160,58 @@
     bottom: 0;
     left: 30px;
 }
-.post-head>.post-user-info>.active.yes{
+
+.post-head>.post-user-info>.active.yes {
     background: greenyellow;
 }
-.post-head>.post-user-info>.active.no{
+
+.post-head>.post-user-info>.active.no {
     background: tomato;
 }
-.post-username-box{
+
+.post-username-box {
     padding: 0 5px;
 }
-.post-username-box>p:nth-child(1){
+
+.post-username-box>p:nth-child(1) {
     font-weight: 500;
 }
-.post-username-box>p:nth-child(2){
+
+.post-username-box>p:nth-child(2) {
     font-size: smaller;
     background: -webkit-linear-gradient(90deg, rgb(255, 134, 186) 0%, rgb(120, 181, 255) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.post-body{
+.post-body {
     display: flex;
-    padding: 5px;
-    height: 250px;
+    padding: 10px;
+    min-height: 250px;
+    flex-direction: column;
+    gap: 10px;
 }
-.post-body img{
+.post-body>p{
+    padding: 0 10px;
+}
+
+.post-body img {
+    background: var(--iColor);
     width: 100%;
+    height: 250px;
     border: 1px solid var(--shadow-color);
     border-radius: 10px;
 }
 
-.post-foot{
+.post-foot {
     display: flex;
     background: transparent;
     justify-content: space-evenly;
     align-items: center;
     overflow: hidden;
-    border-radius: 0 0 10px 10px;
 }
-.post-foot>button{
+
+.post-foot>button,.post-foot>div {
     width: 100%;
     height: 100%;
     background: transparent;
@@ -138,12 +224,87 @@
     gap: 5px;
     transition: 0.5s ease-in-out;
 }
-.post-foot>button:hover{
+
+.post-foot>button:hover {
     cursor: pointer;
     background: var(--shadow-color);
 }
-.post-foot>button:nth-child(1):focus{
+
+.post-foot>button:nth-child(1):focus {
     cursor: pointer;
     background: var(--extra-color);
-    border-radius: 0 10px 0 0;
+}
+
+/* comment */
+.comments{
+    width: 100%;
+}
+.comment{
+    display: flex;
+    flex-direction: column;
+    padding: 5px 10px 10px 10px;
+    border-top: 1px solid var(--shadow-color);
+}
+.comment-content{
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid var(--shadow-color);
+}
+.comment-username-box{
+    display: flex;
+    padding: 5px;
+}
+.comment-username-box>img{
+    width: 40px;
+    border-radius: 50%;
+    background: var(--background);
+}
+.comment-box{
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: var(--background);
+
+    transform-origin: right;
+    opacity: 0;
+    transform: scaleX(0) scaleY(0);
+}
+.comment-button:hover .comment-box,.comment-button:focus .comment-box{
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
+}
+.comment-box>textarea{
+    border: 1px solid var(--shadow-color);
+    padding: 0 3px;
+    resize: none;
+    border-radius: 5px;
+}
+.comment-box>button{
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    background: var(--background);
+}
+.seemore{
+    cursor: pointer;
+    height: 30px;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+}
+.seemore:hover{
+    background: var(--shadow-color);
+}
+
+@media only screen and (max-width: 600px) {
+    .post{
+        width: 100%;
+    }
+}
+
+.post:last-child{
+    /* background: green; */
 }
