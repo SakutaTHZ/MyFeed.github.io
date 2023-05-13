@@ -14,8 +14,15 @@
     --background: white;
     --box-color: white;
     --extra-color: rgba(255, 182, 214, 1);
-    --secondary-color: linear-gradient(90deg, rgba(255, 182, 214, 1) 0%, rgba(165, 206, 255, 1) 100%);
+    --secondary-color: linear-gradient(45deg, rgba(255, 182, 214, 1) 0%, rgba(165, 206, 255, 1) 100%);
     --shadow-color: rgba(0, 0, 0, 0.1);
+    --alert-color: rgb(255, 65, 65);
+}
+
+.gradient-text{
+    background: -webkit-linear-gradient(45deg, rgb(246, 100, 163) 0%, rgb(121, 181, 255) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .center {
@@ -24,24 +31,72 @@
     align-items: center;
 }
 
+/* Nav Bar Css Here */
 .nav{
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 40px;
+    height: 50px;
     box-shadow: 0 0 10px var(--shadow-color);
     z-index: 1000;
     backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+.homeMenu{
+    display: flex;
+    gap: 20px;
+}
+.homeMenu input{
+    border: 1px solid var(--shadow-color);
+    padding: 0 10px;
+    border-radius: 10px;
+    outline: 1px solid transparent;
+}
+.homeMenu input:focus{
+    border: 1px solid transparent;
+    outline: 1.5px solid var(--extra-color);
+}
+.homeMenu a{
+    text-decoration: none;
+}
+.menu{
+    cursor: pointer;
+}
+.notiSetting{
+    display: flex;
+    gap: 10px;
+}
+.notiSetting>span{
+    cursor: pointer;
+    position: relative;
+}
+.noti-count{
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    font-size: 0.4em;
+    background: var(--alert-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1px 3px;
+    border: 1px solid var(--shadow-color);
+    border-radius: 8px;
+    color: var(--background);
 }
 
+/* Post Codes */
 .post-section {
     position: relative;
     width: 100vw;
     height: 100vh;
     background: var(--background);
     gap: 10px;
-    padding: 50px 20px;
+    padding: 60px 20px;
     overflow: hidden;
     overflow-y: scroll;
 

@@ -4,14 +4,17 @@ var verb = ["hit","ate","built","drew","threw","squashed","kiked","punched","fuc
 var verb3 = ["hit","eaten","built","drawn","thrown","squashed","kiked","punched","fucked","licked","smashed"]
 var list;
 
+// to generate Usernames
 function generator() {
  return adjective[Math.floor(Math.random() * adjective.length)] + " " + object[Math.floor(Math.random() * object.length)];;;
 }
 
+// to generate Comments
 function generateComment(){
     return Math.floor(Math.random() * 2) == 0 ? "'" + generator() + "' " + verb[Math.floor(Math.random() * verb.length)] + " '"+ generator() + "'" : "'" + generator() + "' was " + verb3[Math.floor(Math.random() * verb3.length)] + " by '"+ generator() + "'"
 }
 
+// to generate random colors for the post body image (light Colors only)
 function getRandomColor() {
     var letters = 'BCDEF'.split('');
     var color = '#';
