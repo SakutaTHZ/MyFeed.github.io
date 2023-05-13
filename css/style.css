@@ -121,6 +121,9 @@
     align-items: center;
     flex-direction: column;
 }
+.post:hover{
+    box-shadow: -25px 25px 20px var(--shadow-color);
+}
 .post.show{
     opacity: 1;
     transform: translateX(0);
