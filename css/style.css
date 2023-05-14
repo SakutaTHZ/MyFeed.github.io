@@ -8,6 +8,13 @@
     font-family: 'Nunito', sans-serif;
     transition: .5s ease-in-out;
 }
+#myCanvas{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    pointer-events: visibleStroke;
+}
 
 /* Colors */
 :root {
