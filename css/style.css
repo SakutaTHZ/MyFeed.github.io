@@ -38,6 +38,179 @@
     align-items: center;
 }
 
+/* welcome section */
+.welcome-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+}
+.TOGETHER,.title-first-word{
+    font-size: 3em;
+    display: flex;
+    padding: 0 20px;
+    gap: 0;
+    border: 1px solid var(--shadow-color);
+    min-width: 175px;
+    height: 75px;
+}
+.TOGETHER:hover{
+    background: rgb(45, 45, 45);
+    border: 1px solid transparent;
+    gap: 10px;
+    cursor: pointer;
+}
+.TO,.GET,.HER{
+    text-transform: none;
+}
+.TOGETHER:hover .TO,.TOGETHER:hover .GET,.TOGETHER:hover .HER{
+    padding: 0 5px;
+    text-transform: capitalize;
+}
+.TOGETHER:hover .TO{
+    color: blueviolet;
+}
+.TOGETHER:hover .GET{
+    color: rgb(43, 202, 226);
+}
+.TOGETHER:hover .HER{
+    color: rgb(244, 55, 153);
+}
+
+.title-text{
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+@media only screen and (max-width: 600px) {
+    .title-text{
+        flex-direction: column;
+    }
+}
+.title-first-word{
+    padding: 0;
+}
+.ani-text{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.ani-text::before{
+    content: '';
+    opacity: 1;
+    position: absolute;
+    animation: ani-text-animation 15s linear infinite;
+}
+@keyframes ani-text-animation {
+    0%{
+        content: 'Chill';
+        color: rgb(255, 48, 83);
+        transform: translateX(0px);
+    }
+    5%{
+        opacity: 1;
+    }
+    9%{
+        transform: translateX(60px);
+        opacity: 0;
+    }
+    10%{
+        transform: translateX(-60px);
+        opacity: 0;
+    }
+    11%{
+        opacity: 1;
+    }
+    20%{
+        content: 'Play';
+        color: rgb(255, 166, 65);
+        transform: translateX(0px);
+    }
+    25%{
+        opacity: 1;
+    }
+    29%{
+        transform: translateX(60px);
+        opacity: 0;
+    }
+    30%{
+        transform: translateX(-60px);
+        opacity: 0;
+    }
+    31%{
+        opacity: 1;
+    }
+    40%{
+        content: 'Love';
+        color: rgb(255, 240, 78);
+        transform: translateX(0px);
+    }
+    45%{
+        opacity: 1;
+    }
+    49%{
+        transform: translateX(60px);
+        opacity: 0;
+    }
+    50%{
+        transform: translateX(-60px);
+        opacity: 0;
+    }
+    51%{
+        opacity: 1;
+    }
+    60%{
+        content: 'Share';
+        color: rgb(110, 255, 57);
+        transform: translateX(0px);
+    }
+    65%{
+        opacity: 1;
+    }
+    69%{
+        transform: translateX(60px);
+        opacity: 0;
+    }
+    70%{
+        transform: translateX(-60px);
+        opacity: 0;
+    }
+    71%{
+        opacity: 1;
+    }
+    80%{
+        content: 'React';
+        color: rgb(72, 218, 255);
+        transform: translateX(0px);
+    }
+    85%{
+        opacity: 1;
+    }
+    89%{
+        transform: translateX(60px);
+        opacity: 0;
+    }
+    90%{
+        transform: translateX(-60px);
+        opacity: 0;
+    }
+    91%{
+        opacity: 1;
+    }
+    100%{
+        content: 'Chill';
+        color: rgb(255, 70, 101);
+        transform: translateX(0px);
+    }
+}
+
+
 /* Nav Bar Css Here */
 .nav{
     position: fixed;
