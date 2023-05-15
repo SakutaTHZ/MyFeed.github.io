@@ -158,3 +158,14 @@ document.querySelector('.setting-button')?.addEventListener(
 	},
 	false
 )
+
+const thethemes = document.querySelectorAll('.theme')
+thethemes.forEach(element => {
+	element.addEventListener(
+		"click",
+		()=>{
+			document.documentElement.className = element.value;
+			console.log(element.value)
+		},false
+	)
+});
