@@ -107,6 +107,9 @@
     position: absolute;
     animation: ani-text-animation 15s linear infinite;
 }
+.ani-text:hover::before{
+    animation-play-state: paused;
+}
 @keyframes ani-text-animation {
     0%{
         content: 'Chill';
