@@ -140,7 +140,7 @@ const lastPostObserver = new IntersectionObserver(
 
 setTimeout(() => {
 	lastPostObserver.observe(document.querySelector(".post:last-child"))
-}, 100);
+}, 2000);
 
 function loadNewPosts(){
 	for (let index = 0; index < 5; index++) {
